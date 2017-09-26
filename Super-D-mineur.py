@@ -1,12 +1,5 @@
 ##PROGRAMME SOUS LICENSE G.P.L (see README.md) ........ Joris Placette ........ 2017
 
-
-
-
-
-
-
-
 def initialisation(largeur, Longueur, difficulté): #initialise le dessous de grille
     global tableau
     tableau=[]
@@ -197,14 +190,14 @@ def refreshcanvas():
                w.create_rectangle(a[0], a[1], b[0], b[1], fill="blue", outline="")
            
            if plateau[x][y] == '?' :
-                   w.create_text(a[0]+5, a[1]+5, text='?')
+                   w.create_text(a[0]+8, a[1]+8, text='?')
            
            if plateau[x][y] == 'd' :
-                  w.create_rectangle(a[0], a[1], b[0], b[1], fill="red", outline="")
-                  w.create_text(a[0]+5, a[1]+5, text='d')
+                  w.create_rectangle(a[0]+1, a[1]+1, b[0]-1, b[1]-1, fill="red", outline="")
+                  w.create_text(a[0]+8, a[1]+8, text='d')
            for i in range(1,8):
                if plateau[x][y] == str(i) :
-                   w.create_text(a[0]+5, a[1]+5, text=str(i))
+                   w.create_text(a[0]+8, a[1]+8, text=str(i))
                    
 def donothing(): #ne fait rien, comme son nom l'indique
    filewin = Toplevel(root)
