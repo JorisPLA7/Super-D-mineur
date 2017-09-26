@@ -11,10 +11,10 @@ def initialisation(largeur, Longueur, difficulté): #initialise le dessous de gr
                 lignes[i]="o"
         tableau.append(lignes)
 
-    for i in range(Longueur):
-        for j in range(largeur): #compteur pour les numéros
+    for i in range(len(tableau)):
+        for j in range(len(tableau[i])):
             if tableau[i][j]!="o":
-                nb=0
+                nb=0  #compteur pour les numéros
                 try:
                     if tableau[i-1][j-1]=="o":
                         nb+=1
@@ -89,7 +89,7 @@ def liberer():
 
 def positionnement(x,y,action):
 
-    if action=="rightclick" :#on place le drapeau (d) ou le point d'interrgoation (?)
+    if action=="rightclick" :#on place le drapeau (d) ou le point d'interrogation (?)
         if plateau[x][y]==0:
             plateau[x][y]="d"
 
@@ -109,7 +109,7 @@ def positionnement(x,y,action):
             plateau[x][y]=tableau[x][y]
 
         liberer()
-        victoire ()
+    victoire ()
 
 def findujeu(): #défaite
     print("game over")
@@ -120,6 +120,8 @@ def findujeu(): #défaite
                             plateau [i][j]="green"
                         else :
                             plateau [i][j]="bomb"
+                    if plateau [i][j]=="d" and tableau[i][j]!="o":
+                        plateau [i][j]="fail"
     refreshcanvas()
     #voir sur tk pour l'affichage de la fin
 
@@ -130,9 +132,18 @@ def victoire (): # dans le mainloop : vérifie les conditions de victoire
 
             if tableau[i][j]=="o":
                 toutes_mines_trouvées= toutes_mines_trouvées and plateau[i][j]=="d"
+            
+            if plateau[i][j]=="d" and tableau[i][j]!="o":
+                toutes_mines_trouvées=False
+            
+                
 
     if toutes_mines_trouvées==True :
         print("Bravo !")
+        for i in range(len(tableau)):
+                    for j in range(len(tableau[i])):
+                        if tableau[i][j]=="o":
+                            plateau [i][j]="gold"
         #actions de fin de partie
         #rejouer ?
 
@@ -148,13 +159,13 @@ def victoire (): # dans le mainloop : vérifie les conditions de victoire
 def key(event):
     print ("pressed", repr(event.char))
 
-def callback(event):
+def callback(event):#clic gauche
     x,y = event.x//20, event.y//20
     print ("clicked at", x,y)
     positionnement(x,y,"leftclick")
     refreshcanvas()
 
-def call2(event):
+def call2(event): #clic droit
     x,y = event.x//20, event.y//20
     print ("clicked at", x,y)
     positionnement(x,y,"rightclick")
@@ -214,8 +225,17 @@ def refreshcanvas():
 
            if plateau[x][y] == 'green' :
                    w.create_rectangle(a[0], a[1], b[0], b[1], fill="green", outline="")
+                   w.create_text(a[0]+8, a[1]+8, text=str(chr(9881)))
+                   
            if plateau[x][y] == 'bomb' :
-                   w.create_rectangle(a[0], a[1], b[0], b[1], fill="black", outline="")
+                   w.create_rectangle(a[0], a[1], b[0], b[1], fill="purple", outline="")
+                   w.create_text(a[0]+8, a[1]+8, text=str(chr(9881)))
+           if plateau[x][y] == 'gold' :
+                   w.create_rectangle(a[0], a[1], b[0], b[1], fill="yellow", outline="")
+                   w.create_text(a[0]+8, a[1]+8, text=str(chr(9883)))
+           if plateau[x][y] == 'fail' :
+                   w.create_rectangle(a[0], a[1], b[0], b[1], fill="orange", outline="")
+                   w.create_text(a[0]+8, a[1]+8, text=str(chr(9874)))     
 
            if plateau[x][y] == '?' :
                 w.create_rectangle(a[0], a[1], b[0], b[1], fill="grey", outline="")
@@ -224,7 +244,7 @@ def refreshcanvas():
 
            if plateau[x][y] == 'd' :
                   w.create_rectangle(a[0]+1, a[1]+1, b[0]-1, b[1]-1, fill="red", outline="")
-                  w.create_text(a[0]+8, a[1]+8, text='d')
+                  w.create_text(a[0]+8, a[1]+8, text=str(chr(9873)))
            for i in range(1,8):
                if plateau[x][y] == str(i) :
                    w.create_text(a[0]+8, a[1]+8, text=str(i))
@@ -328,7 +348,7 @@ root.wm_iconbitmap('ressources\supano.ico')#definition de l'icone
 
 
 
-##Barre de Menu suppérieur
+##Barre de Menu supérieur
 menubar = Menu(root)
 
 filemenu = Menu(menubar, tearoff=0) #sous menu
@@ -354,7 +374,7 @@ root.config(menu=menubar)
 header = Label(root, text="Super-Demineur. Version {}".format(appVersion))
 header.pack(fill="both", expand="no")
 
-##Panneau lateral
+##Panneau latéral
 aside = Frame(root)
 aside.pack(side=LEFT)
 
