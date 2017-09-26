@@ -6,3 +6,11 @@ donne moi les variables que tu veux pouvoir demander à l'utilisateur avant de dé
 Variables : Longueur (entier quelconque), largeur (entier quelconque), difficulté (entier entre 1 et 10 pour l'instant)
 
 J'ai besoin d'une triple affectation (juste un triplet de valeurs globales, je pense que c'est le mieux)
+
+du coup je te propose: 
+	au debut:
+		x entier , y entier , diff entre 1 et 10 10 le + dur
+		newDraw(x,y,defficulty)
+	en jeu:
+		type de clic, True: clic de déminage, False: clic de drapeau
+		refresh(posx,posy,type)
