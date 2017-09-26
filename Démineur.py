@@ -6,7 +6,7 @@ def initialisation(largeur, Longueur, difficulté): #initialise le dessous de gr
     tableau=[]
     for i in range(Longueur): #positionnement des mines
         lignes=[" " for i in range(largeur)]
-        for i in len(lignes):
+        for i in range(len(lignes)):
             mine=random.randint(0,35)
             if mine<=difficulté:
                 lignes[i]="o"
@@ -40,16 +40,24 @@ def initialisation(largeur, Longueur, difficulté): #initialise le dessous de gr
 
                     if tableau[i+1][j+1]=="o":
                         nb+=1
+
+                except:
+                    pass
                         
                 if nb!=0:
                     tableau[i][j]=str(nb)
+
+
+def init_plateau():   #crée la liste affichée à l'utilisateur
+    global plateau
+    plateau=[[]for i in range(len(tableau))]
+    
                     
                     
 
+initialisation(10,10,7)
+
     
-    
 
 
 
-def positionnement(x,y,action):
-    if

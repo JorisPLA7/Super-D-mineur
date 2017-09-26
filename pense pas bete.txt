@@ -7,6 +7,7 @@ Variables : Longueur (entier quelconque), largeur (entier quelconque), difficult
 
 J'ai besoin d'une triple affectation (juste un triplet de valeurs globales, je pense que c'est le mieux)
 
+<<<<<<< HEAD
 du coup je te propose: 
 	au debut:
 		x entier , y entier , diff entre 1 et 10 10 le + dur
@@ -14,3 +15,14 @@ du coup je te propose:
 	en jeu:
 		type de clic, True: clic de déminage, False: clic de drapeau
 		refresh(posx,posy,type)
+=======
+
+
+Lexique du tableau de sous-plateau (celle qui est affichée une fois révélée):
+
+nom du tableau (2dimensions) : tableau (globale)
+" ":rien
+"o":mine
+
+"{}".format(n) : case avec n mines autour.
+>>>>>>> d668f78569a0d5a21e67a2d9609d7f5a7ee6a9ce
