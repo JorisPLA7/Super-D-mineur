@@ -1,3 +1,8 @@
-donne moi les variables que tu veux pouvoir demander à l'utilisateur avant de débuter la partie:
+donne moi les variables que tu veux pouvoir demander à l'utilisateur avant de débuter la partie: 
 	genre la taille de la grille , genre le nbr de mines ?
 	comment te les donner ; ex en appelant la fct CreerGrille(X,Y,nbr) par exemple
+
+
+Variables : Longueur (entier quelconque), largeur (entier quelconque), difficulté (entier entre 1 et 10 pour l'instant)
+
+J'ai besoin d'une triple affectation (juste un triplet de valeurs globales, je pense que c'est le mieux)
