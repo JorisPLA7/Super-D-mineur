@@ -53,23 +53,28 @@ def init_plateau():   #crée la liste "affichée" à l'utilisateur
     for i in range(len(plateau)):
                    plateau[i]=[0 for j in range(len(tableau[i]))]
                    # un tableau qui contient des zéros pour l'instant, signifiant "case non découverte"
-def libérer():
-    for i in range(len(tableau)):
-        for j in range(len(tableau[i])):
-            if plateau[i][j]==" ":
-                try:
-                    if tableau[i-1][j]!="o":
-                        plateau[i-1][j]=tableau[i-1][j]
-                    if tableau[i+1][j]!="o":
-                        plateau[i+1][j]=tableau[i+1][j]
-                    if tableau[i][j-1]!="o":
-                        plateau[i][j-1]=tableau[i-1][j]
-                    if tableau[i][j+1]!="o":
-                        plateau[i][j+1]=tableau[i-1][j]
-                        
-                       
-                except:
-                    pass
+def liberer():
+    meme=0
+    while meme==0:
+        save=plateau
+        for i in range(len(tableau)):
+            for j in range(len(tableau[i])):
+                if plateau[i][j]==" ":
+                    try:
+                        if tableau[i-1][j]!="o":
+                            plateau[i-1][j]=tableau[i-1][j]
+                        if tableau[i+1][j]!="o":
+                            plateau[i+1][j]=tableau[i+1][j]
+                        if tableau[i][j-1]!="o":
+                            plateau[i][j-1]=tableau[i-1][j]
+                        if tableau[i][j+1]!="o":
+                            plateau[i][j+1]=tableau[i-1][j]
+                            
+                           
+                    except:
+                        pass
+        if save==plateau:
+            meme=1
 
 def positionnement(x,y,action):
                
@@ -91,6 +96,8 @@ def positionnement(x,y,action):
         
         if tableau[x][y]!="o":
             plateau[x][y]=tableau[x][y]
+        
+        liberer()
 
 def findujeu(): #défaite
     print("game over")
