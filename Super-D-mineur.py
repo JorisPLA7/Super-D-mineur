@@ -194,7 +194,7 @@ def refreshcanvas():
                w.create_rectangle(a[0], a[1], b[0], b[1], fill="white", outline="")
            
            if plateau[x][y] == 0: # case inexplorée
-               w.create_rectangle(a[0], a[1], b[0], b[1], fill="blue", outline="")
+               w.create_rectangle(a[0], a[1], b[0], b[1], fill="grey", outline="")
            
            if plateau[x][y] == '?' :
                    w.create_text(a[0]+8, a[1]+8, text='?')
@@ -311,8 +311,8 @@ menubar = Menu(root)
 
 filemenu = Menu(menubar, tearoff=0) #sous menu
 
-filemenu.add_command(label="Ouvrir une sauvegarde", command=rbfcbutton)
-filemenu.add_command(label="Sauvegarder sans validation", command=forcesave)
+filemenu.add_command(label="Ouvrir une sauvegarde NON FONCTIONNEL", command=rbfcbutton)
+filemenu.add_command(label="Sauvegarder sans validation NON FONCTIONNEL", command=forcesave)
 filemenu.add_separator()
 
 filemenu.add_command(label="Quitter", command=root.destroy)
