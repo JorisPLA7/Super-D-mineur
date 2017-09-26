@@ -6,3 +6,13 @@ donne moi les variables que tu veux pouvoir demander à l'utilisateur avant de dé
 Variables : Longueur (entier quelconque), largeur (entier quelconque), difficulté (entier entre 1 et 10 pour l'instant)
 
 J'ai besoin d'une triple affectation (juste un triplet de valeurs globales, je pense que c'est le mieux)
+
+
+
+Lexique du tableau de sous-plateau (celle qui est affichée une fois révélée):
+
+nom du tableau (2dimensions) : tableau (globale)
+" ":rien
+"o":mine
+
+"{}".format(n) : case avec n mines autour.
