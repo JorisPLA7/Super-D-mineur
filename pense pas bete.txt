@@ -33,3 +33,13 @@ x numéro de LIGNE (int)
 y numéro de COLONNE (int)
 action : "rightclick"/"leftclick" (str, au moins temporairement)
 
+pour la liste de surcouche :
+
+0 case vierge
+
+"d" pour drapeau
+
+"?" pour le ?
+
+si révélée par un clic gauche, prend la valeur de la liste sous-jacente (sauf si c'est une mine)
+
