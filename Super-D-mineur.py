@@ -147,7 +147,6 @@ def victoire (): # dans le mainloop : vérifie les conditions de victoire
         #actions de fin de partie
         #rejouer ?
 
-<<<<<<< HEAD
 
 
 
@@ -160,10 +159,10 @@ def victoire (): # dans le mainloop : vérifie les conditions de victoire
 def key(event):
     print ("pressed", repr(event.char))
 
+
+
 def callback(event):#clic gauche
-=======
-def callback(event):
->>>>>>> 8ce61e89418ab6af6e80b6bef225f61d494cc078
+
     x,y = event.x//20, event.y//20
     positionnement(x,y,"leftclick")
     refreshcanvas()
