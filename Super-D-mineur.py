@@ -147,6 +147,7 @@ def victoire (): # dans le mainloop : vérifie les conditions de victoire
         #actions de fin de partie
         #rejouer ?
 
+<<<<<<< HEAD
 
 
 
@@ -160,14 +161,15 @@ def key(event):
     print ("pressed", repr(event.char))
 
 def callback(event):#clic gauche
+=======
+def callback(event):
+>>>>>>> 8ce61e89418ab6af6e80b6bef225f61d494cc078
     x,y = event.x//20, event.y//20
-    print ("clicked at", x,y)
     positionnement(x,y,"leftclick")
     refreshcanvas()
 
 def call2(event): #clic droit
     x,y = event.x//20, event.y//20
-    print ("clicked at", x,y)
     positionnement(x,y,"rightclick")
     refreshcanvas()
 
@@ -177,13 +179,16 @@ def call2(event): #clic droit
 def rbfcbutton():  #fonction appelée pour ouvrir un fichier existant
    global cacheData
    cacheData = datasheets.pickread()
-
-   print("nouvelles données en ram: {}".format(cacheData))
+   tableau = cacheData['tableau']
+   plateau = cacheData['plateau']
+   refreshcanvas()
 
 '''à changer'''
 
 def wbfcbutton(): #fonction appelée pour écrire les valeurs dans un fichier
-   datasheets.pickwrite(cacheData) # se référer à datasheets.py
+    cacheData['tableau'] = tableau #stockage des données dans le dico si le joueur veut sauvegarder
+    cacheData['plateau'] = plateau
+    datasheets.pickwrite(cacheData) # se référer à datasheets.py
 
 def createNewDraw():
     pulldata()
@@ -258,7 +263,6 @@ def donothing(): #ne fait rien, comme son nom l'indique
 '''à changer'''
 def forcesave():
    print("tentative de sauvegarde forcée")
-   pulldata()
    wbfcbutton()
 
 '''à changer'''
@@ -335,9 +339,7 @@ global passedTime
 passedTime = 800
 
 appVersion = "0.1"
-'''helpPage = "https://github.com/JorisPLA7/Super-Conway/blob/master/README.md" #lien pages d'aide à consulter
-githubPage = "https://github.com/JorisPLA7/Super-Conway/blob/master/"
-'''
+
 cacheData = {}
 
 
@@ -362,8 +364,8 @@ menubar.add_cascade(label="Fichier", menu=filemenu)
 
 helpmenu = Menu(menubar, tearoff=0) #sous menu
 helpmenu.add_command(label="Version de l'application : {}".format(appVersion), command=web.help)
-helpmenu.add_command(label="Ouvrir une aide sur le web", command=web.help)
 menubar.add_cascade(label="Aide", menu=helpmenu)
+menubar.add_command(label="Règles du démineur", command=web.rules)
 
 devmenu = Menu(menubar, tearoff=0) #sous menu
 menubar.add_cascade(label="Developpement", menu=devmenu)

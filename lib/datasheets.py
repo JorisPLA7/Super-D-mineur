@@ -3,7 +3,7 @@ import pickle
 
 def pickwrite(cacheData):
 	try:
-		filepath = asksaveasfilename(title="Sauveagrder une configuration",filetypes=[('configuration Super-Conway','.golife'),('all files','.*')]) #récupération de l'adresse à laquelle enregistrer le fichier
+		filepath = asksaveasfilename(title="Sauveagrder la partie",filetypes=[('configuration Super-D-mineur','.Dmine'),('all files','.*')]) #récupération de l'adresse à laquelle enregistrer le fichier
 		with open(filepath, 'wb') as Fichier: #ouverture d'un Fichier , il sera automatiquement fermé à la fin de la boucle
 			mon_pickler = pickle.Pickler(Fichier)
 			mon_pickler.dump(cacheData)#ecriture des données dans le fichier
