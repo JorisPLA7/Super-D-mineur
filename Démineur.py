@@ -48,9 +48,18 @@ def initialisation(largeur, Longueur, difficulté): #initialise le dessous de gr
                     tableau[i][j]=str(nb)
 
 
-def init_plateau():   #crée la liste affichée à l'utilisateur
+def init_plateau():   #crée la liste "affichée" à l'utilisateur
     global plateau
-    plateau=[[]for i in range(len(tableau))]
+    plateau=[ [] for i in range(len(tableau))]
+    for i in range(len(plateau):
+                   plateau[i]=[0 for j in range(len(tableau[i]))]
+                   # un tableau qui contient des zéros pour l'instant, signifiant "case non découverte"
+
+
+def positionnement(x,y,action):
+                   
+                   
+    
     
                     
                     
