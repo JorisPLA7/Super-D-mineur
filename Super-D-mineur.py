@@ -57,22 +57,24 @@ def liberer():
     meme=0
     while meme==0:
         save=plateau
-        for i in range(len(tableau)):
-            for j in range(len(tableau[i])):
-                if plateau[i][j]==" ":
-                    try:
-                        if tableau[i-1][j]!="o":
-                            plateau[i-1][j]=tableau[i-1][j]
-                        if tableau[i+1][j]!="o":
-                            plateau[i+1][j]=tableau[i+1][j]
-                        if tableau[i][j-1]!="o":
-                            plateau[i][j-1]=tableau[i-1][j]
-                        if tableau[i][j+1]!="o":
-                            plateau[i][j+1]=tableau[i-1][j]
-                            
-                           
-                    except:
-                        pass
+        for i in range(3):
+            
+            for i in range(len(tableau)):
+                for j in range(len(tableau[i])):
+                    if plateau[i][j]==" ":
+                        try:
+                            if tableau[i-1][j]!="o":
+                                plateau[i-1][j]=tableau[i-1][j]
+                            if tableau[i+1][j]!="o":
+                                plateau[i+1][j]=tableau[i+1][j]
+                            if tableau[i][j-1]!="o":
+                                plateau[i][j-1]=tableau[i-1][j]
+                            if tableau[i][j+1]!="o":
+                                plateau[i][j+1]=tableau[i-1][j]
+                                
+                               
+                        except:
+                            pass
         if save==plateau:
             meme=1
 
@@ -194,7 +196,7 @@ def refreshcanvas():
                w.create_rectangle(a[0], a[1], b[0], b[1], fill="white", outline="")
            
            if plateau[x][y] == 0: # case inexplorée
-               w.create_rectangle(a[0], a[1], b[0], b[1], fill="grey", outline="")
+               w.create_rectangle(a[0], a[1], b[0], b[1], fill="blue", outline="")
            
            if plateau[x][y] == '?' :
                    w.create_text(a[0]+8, a[1]+8, text='?')
@@ -311,8 +313,8 @@ menubar = Menu(root)
 
 filemenu = Menu(menubar, tearoff=0) #sous menu
 
-filemenu.add_command(label="Ouvrir une sauvegarde NON FONCTIONNEL", command=rbfcbutton)
-filemenu.add_command(label="Sauvegarder sans validation NON FONCTIONNEL", command=forcesave)
+filemenu.add_command(label="Ouvrir une sauvegarde", command=rbfcbutton)
+filemenu.add_command(label="Sauvegarder sans validation", command=forcesave)
 filemenu.add_separator()
 
 filemenu.add_command(label="Quitter", command=root.destroy)
