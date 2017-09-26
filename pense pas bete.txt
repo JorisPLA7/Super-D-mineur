@@ -23,3 +23,26 @@ Lexique du tableau de sous-plateau (celle qui est affichée une fois révélée):
 nom du tableau (2dimensions) : tableau (globale)
 " ":rien
 "o":mine
+<<<<<<< HEAD
+
+"{}".format(n) : case avec n mines autour.
+>>>>>>> d668f78569a0d5a21e67a2d9609d7f5a7ee6a9ce
+
+
+Pour la fonction de positionnement : 3 arguments : x,y,action
+x numéro de LIGNE (int)
+y numéro de COLONNE (int)
+action : "rightclick"/"leftclick" (str, au moins temporairement)
+
+pour la liste de surcouche :
+
+0 case vierge
+
+"d" pour drapeau
+
+"?" pour le ?
+
+si révélée par un clic gauche, prend la valeur de la liste sous-jacente (sauf si c'est une mine)
+
+=======
+>>>>>>> 9a639ff5fc9e5249d5d8db6c6cb025b62cd8b815
