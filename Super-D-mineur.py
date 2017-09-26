@@ -57,7 +57,7 @@ def liberer():
     meme=0
     while meme==0:
         save=plateau
-        for i in range(3):
+        for i in range(15):
             
             for i in range(len(tableau)):
                 for j in range(len(tableau[i])):
@@ -68,9 +68,18 @@ def liberer():
                             if tableau[i+1][j]!="o":
                                 plateau[i+1][j]=tableau[i+1][j]
                             if tableau[i][j-1]!="o":
-                                plateau[i][j-1]=tableau[i-1][j]
+                                plateau[i][j-1]=tableau[i][j-1]
                             if tableau[i][j+1]!="o":
-                                plateau[i][j+1]=tableau[i-1][j]
+                                plateau[i][j+1]=tableau[i][j+1]
+                                
+                            if tableau[i-1][j-1]!="o":
+                                plateau[i-1][j-1]=tableau[i-1][j-1]
+                            if tableau[i-1][j-1]!="o":
+                                plateau[i-1][j-1]=tableau[i-1][j-1]
+                            if tableau[i+1][j-1]!="o":
+                                plateau[i+1][j-1]=tableau[i+1][j-1]
+                            if tableau[i+1][j+1]!="o":
+                                plateau[i+1][j+1]=tableau[i+1][j+1]
                                 
                                
                         except:
@@ -79,7 +88,7 @@ def liberer():
             meme=1
 
 def positionnement(x,y,action):
-               
+    
     if action=="rightclick" :#on place le drapeau (d) ou le point d'interrgoation (?)
         if plateau[x][y]==0:
             plateau[x][y]="d"
@@ -100,9 +109,18 @@ def positionnement(x,y,action):
             plateau[x][y]=tableau[x][y]
         
         liberer()
+        victoire ()
 
 def findujeu(): #défaite
     print("game over")
+    for i in range(len(tableau)):
+                for j in range(len(tableau[i])):
+                    if tableau[i][j]=="o":
+                        if plateau [i][j]=="d":
+                            plateau [i][j]="green"
+                        else :
+                            plateau [i][j]="bomb"
+    refreshcanvas()
     #voir sur tk pour l'affichage de la fin
 
 def victoire (): # dans le mainloop : vérifie les conditions de victoire
@@ -196,10 +214,16 @@ def refreshcanvas():
                w.create_rectangle(a[0], a[1], b[0], b[1], fill="white", outline="")
            
            if plateau[x][y] == 0: # case inexplorée
-               w.create_rectangle(a[0], a[1], b[0], b[1], fill="blue", outline="")
+               w.create_rectangle(a[0], a[1], b[0], b[1], fill="grey", outline="")
            
+           if plateau[x][y] == 'green' :
+                   w.create_rectangle(a[0], a[1], b[0], b[1], fill="green", outline="")
+           if plateau[x][y] == 'bomb' :
+                   w.create_rectangle(a[0], a[1], b[0], b[1], fill="black", outline="")
+                   
            if plateau[x][y] == '?' :
                    w.create_text(a[0]+8, a[1]+8, text='?')
+
            
            if plateau[x][y] == 'd' :
                   w.create_rectangle(a[0]+1, a[1]+1, b[0]-1, b[1]-1, fill="red", outline="")
@@ -313,8 +337,8 @@ menubar = Menu(root)
 
 filemenu = Menu(menubar, tearoff=0) #sous menu
 
-filemenu.add_command(label="Ouvrir une sauvegarde", command=rbfcbutton)
-filemenu.add_command(label="Sauvegarder sans validation", command=forcesave)
+filemenu.add_command(label="Ouvrir une sauvegarde NON FONCTIONNEL", command=rbfcbutton)
+filemenu.add_command(label="Sauvegarder sans validation NON FONCTIONNEL", command=forcesave)
 filemenu.add_separator()
 
 filemenu.add_command(label="Quitter", command=root.destroy)
