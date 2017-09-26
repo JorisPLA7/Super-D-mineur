@@ -70,13 +70,33 @@ def positionnement(x,y,action):
 
     elif action=="leftclick":
         if tableau[x][y]=="o":
-            #findujeu()
+            
             print("boom")
+            findujeu()
         
         if tableau[x][y]!="o":
             plateau[x][y]=tableau[x][y]
 
-#def fin():
+def findujeu(): #défaite
+    print("game over")
+    #voir sur tk pour l'affichage de la fin
+
+def victoire (): # dans le mainloop : vérifie les conditions de victoire
+    toutes_mines_trouvées=True
+    for i in range(len(tableau)):
+        for j in range(len(tableau[i])):
+                       
+            if tableau[i][j]=="o":
+                toutes_mines_trouvées= toutes_mines_trouvées and plateau[i][j]=="d"
+
+    if toutes_mines_trouvées==True :
+        print("Bravo !")
+        #actions de fin de partie
+        #rejouer ?
+                       
+                       
+    
+    
     
     
                     
