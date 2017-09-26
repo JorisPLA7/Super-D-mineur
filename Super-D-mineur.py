@@ -218,7 +218,8 @@ def refreshcanvas():
                    w.create_rectangle(a[0], a[1], b[0], b[1], fill="black", outline="")
 
            if plateau[x][y] == '?' :
-                   w.create_text(a[0]+8, a[1]+8, text='?')
+                w.create_rectangle(a[0], a[1], b[0], b[1], fill="grey", outline="")
+                w.create_text(a[0]+8, a[1]+8, text='?')
 
 
            if plateau[x][y] == 'd' :
