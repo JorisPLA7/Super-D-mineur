@@ -51,21 +51,39 @@ def initialisation(largeur, Longueur, difficulté): #initialise le dessous de gr
 def init_plateau():   #crée la liste "affichée" à l'utilisateur
     global plateau
     plateau=[ [] for i in range(len(tableau))]
-    for i in range(len(plateau):
+    for i in range(len(plateau)):
                    plateau[i]=[0 for j in range(len(tableau[i]))]
                    # un tableau qui contient des zéros pour l'instant, signifiant "case non découverte"
 
 
 def positionnement(x,y,action):
+               
+    if action=="rightclick" :#on place le drapeau (d) ou le point d'interrgoation (?)
+        if plateau[x][y]==0:
+            plateau[x][y]="d"
                    
+        elif plateau[x][y]=="d":
+            plateau[x][y]="?"
                    
+        elif plateau[x][y]=="?":
+            plateau[x][y]=0
+
+    elif action=="leftclick":
+        if tableau[x][y]=="o":
+            #findujeu()
+            print("boom")
+        
+        if tableau[x][y]!="o":
+            plateau[x][y]=tableau[x][y]
+
+#def fin():
     
     
                     
                     
 
 initialisation(10,10,7)
-
+init_plateau()
     
 
 
