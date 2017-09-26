@@ -1,0 +1,3 @@
+donne moi les variables que tu veux pouvoir demander à l'utilisateur avant de débuter la partie:
+	genre la taille de la grille , genre le nbr de mines ?
+	comment te les donner ; ex en appelant la fct CreerGrille(X,Y,nbr) par exemple
