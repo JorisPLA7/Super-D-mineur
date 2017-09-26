@@ -26,3 +26,10 @@ nom du tableau (2dimensions) : tableau (globale)
 
 "{}".format(n) : case avec n mines autour.
 >>>>>>> d668f78569a0d5a21e67a2d9609d7f5a7ee6a9ce
+
+
+Pour la fonction de positionnement : 3 arguments : x,y,action
+x numéro de LIGNE (int)
+y numéro de COLONNE (int)
+action : "rightclick"/"leftclick" (str, au moins temporairement)
+
