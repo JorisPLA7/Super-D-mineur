@@ -21,19 +21,19 @@ def initialisation(largeur, Longueur, difficulté): #initialise le dessous de gr
 
                     if tableau[i-1][j]=="o":
                         nb+=1
-                        
+
                     if tableau[i-1][j+1]=="o":
                         nb+=1
 
                     if tableau[i][j-1]=="o":
                         nb+=1
-                        
+
                     if tableau[i][j+1]=="o":
                         nb+=1
 
                     if tableau[i+1][j-1]=="o":
                         nb+=1
-                        
+
                     if tableau[i+1][j]=="o":
                         nb+=1
 
@@ -42,7 +42,7 @@ def initialisation(largeur, Longueur, difficulté): #initialise le dessous de gr
 
                 except:
                     pass
-                        
+
                 if nb!=0:
                     tableau[i][j]=str(nb)
 
@@ -58,7 +58,7 @@ def liberer():
     while meme==0:
         save=plateau
         for i in range(15):
-            
+
             for i in range(len(tableau)):
                 for j in range(len(tableau[i])):
                     if plateau[i][j]==" ":
@@ -71,7 +71,7 @@ def liberer():
                                 plateau[i][j-1]=tableau[i][j-1]
                             if tableau[i][j+1]!="o":
                                 plateau[i][j+1]=tableau[i][j+1]
-                                
+
                             if tableau[i-1][j-1]!="o":
                                 plateau[i-1][j-1]=tableau[i-1][j-1]
                             if tableau[i-1][j-1]!="o":
@@ -80,34 +80,34 @@ def liberer():
                                 plateau[i+1][j-1]=tableau[i+1][j-1]
                             if tableau[i+1][j+1]!="o":
                                 plateau[i+1][j+1]=tableau[i+1][j+1]
-                                
-                               
+
+
                         except:
                             pass
         if save==plateau:
             meme=1
 
 def positionnement(x,y,action):
-    
+
     if action=="rightclick" :#on place le drapeau (d) ou le point d'interrgoation (?)
         if plateau[x][y]==0:
             plateau[x][y]="d"
-                   
+
         elif plateau[x][y]=="d":
             plateau[x][y]="?"
-                   
+
         elif plateau[x][y]=="?":
             plateau[x][y]=0
 
     elif action=="leftclick":
         if tableau[x][y]=="o":
-            
+
             print("boom")
             findujeu()
-        
+
         if tableau[x][y]!="o":
             plateau[x][y]=tableau[x][y]
-        
+
         liberer()
         victoire ()
 
@@ -127,7 +127,7 @@ def victoire (): # dans le mainloop : vérifie les conditions de victoire
     toutes_mines_trouvées=True
     for i in range(len(tableau)):
         for j in range(len(tableau[i])):
-                       
+
             if tableau[i][j]=="o":
                 toutes_mines_trouvées= toutes_mines_trouvées and plateau[i][j]=="d"
 
@@ -135,13 +135,13 @@ def victoire (): # dans le mainloop : vérifie les conditions de victoire
         print("Bravo !")
         #actions de fin de partie
         #rejouer ?
-                       
-                       
-    
-    
-    
-    
-             
+
+
+
+
+
+
+
 
 
 
@@ -153,7 +153,7 @@ def callback(event):
     print ("clicked at", x,y)
     positionnement(x,y,"leftclick")
     refreshcanvas()
-    
+
 def call2(event):
     x,y = event.x//20, event.y//20
     print ("clicked at", x,y)
@@ -199,39 +199,39 @@ def pulldata():
     #récupération des données
    cacheData["p"] = int(p.get())
    cacheData["xLen"] = int(xLen.get())
-   cacheData["yLen"] = int(yLen.get())
+   cacheData["yLen"] = cacheData["xLen"]
 def refreshcanvas():
    w.delete("all")
 
    for x in range (len(tableau)):
        for y in range (len(tableau[x])):
-   
+
        #print('x = {} y = {}  b = {}'.format(x,y,cacheData['draw'][x][y]))
            a = (x*20+1, y*20+1)
            b = ((a[0]+18), a[1]+18)
            #if cacheData['draw'][x][y] == 0 : w.create_rectangle(a[0], a[1], b[0], b[1], fill="white")
            if plateau[x][y] == ' ' :
                w.create_rectangle(a[0], a[1], b[0], b[1], fill="white", outline="")
-           
+
            if plateau[x][y] == 0: # case inexplorée
                w.create_rectangle(a[0], a[1], b[0], b[1], fill="grey", outline="")
-           
+
            if plateau[x][y] == 'green' :
                    w.create_rectangle(a[0], a[1], b[0], b[1], fill="green", outline="")
            if plateau[x][y] == 'bomb' :
                    w.create_rectangle(a[0], a[1], b[0], b[1], fill="black", outline="")
-                   
+
            if plateau[x][y] == '?' :
                    w.create_text(a[0]+8, a[1]+8, text='?')
 
-           
+
            if plateau[x][y] == 'd' :
                   w.create_rectangle(a[0]+1, a[1]+1, b[0]-1, b[1]-1, fill="red", outline="")
                   w.create_text(a[0]+8, a[1]+8, text='d')
            for i in range(1,8):
                if plateau[x][y] == str(i) :
                    w.create_text(a[0]+8, a[1]+8, text=str(i))
-                   
+
 def donothing(): #ne fait rien, comme son nom l'indique
    filewin = Toplevel(root)
    button = Button(filewin, text="Do nothing button")
@@ -373,13 +373,11 @@ left.pack()
 p = Scale(starter,from_=1, to=10,)
 p.pack()
 
-left2 = Label(starter, text="Taille de la grille (x,y)")
+left2 = Label(starter, text="Taille de la grille (x = y)")
 left2.pack() #on intègre le module déclaré à sa fenêtre (pack(sans paramètre) donc simplement à la suite du reste)
 
-xLen = Spinbox(starter, from_=20, to=1000,)
+xLen = Spinbox(starter, from_=20, to=100,)
 xLen.pack() #on intègre le module déclaré à sa fenêtre (pack(sans paramètre) donc simplement à la suite du reste)
-yLen = Spinbox(starter, from_=20, to=1000,)
-yLen.pack() #on intègre le module déclaré à sa fenêtre (pack(sans paramètre) donc simplement à la suite du reste)
 
 creatbutton= Button(starter, text="Jouer !", command=createNewDraw)
 creatbutton.pack()
