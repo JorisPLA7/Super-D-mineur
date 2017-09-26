@@ -7,15 +7,122 @@
 
 
 
+def initialisation(largeur, Longueur, difficulté): #initialise le dessous de grille
+    global tableau
+    tableau=[]
+    for i in range(Longueur): #positionnement des mines
+        lignes=[" " for i in range(largeur)]
+        for i in range(len(lignes)):
+            mine=random.randint(0,35)
+            if mine<=difficulté:
+                lignes[i]="o"
+        tableau.append(lignes)
+
+    for i in range(Longueur):
+        for j in range(largeur): #compteur pour les numéros
+            if tableau[i][j]!="o":
+                nb=0
+                try:
+                    if tableau[i-1][j-1]=="o":
+                        nb+=1
+
+                    if tableau[i-1][j]=="o":
+                        nb+=1
+                        
+                    if tableau[i-1][j+1]=="o":
+                        nb+=1
+
+                    if tableau[i][j-1]=="o":
+                        nb+=1
+                        
+                    if tableau[i][j+1]=="o":
+                        nb+=1
+
+                    if tableau[i+1][j-1]=="o":
+                        nb+=1
+                        
+                    if tableau[i+1][j]=="o":
+                        nb+=1
+
+                    if tableau[i+1][j+1]=="o":
+                        nb+=1
+
+                except:
+                    pass
+                        
+                if nb!=0:
+                    tableau[i][j]=str(nb)
+
+
+def init_plateau():   #crée la liste "affichée" à l'utilisateur
+    global plateau
+    plateau=[ [] for i in range(len(tableau))]
+    for i in range(len(plateau)):
+                   plateau[i]=[0 for j in range(len(tableau[i]))]
+                   # un tableau qui contient des zéros pour l'instant, signifiant "case non découverte"
+
+
+def positionnement(x,y,action):
+               
+    if action=="rightclick" :#on place le drapeau (d) ou le point d'interrgoation (?)
+        if plateau[x][y]==0:
+            plateau[x][y]="d"
+                   
+        elif plateau[x][y]=="d":
+            plateau[x][y]="?"
+                   
+        elif plateau[x][y]=="?":
+            plateau[x][y]=0
+
+    elif action=="leftclick":
+        if tableau[x][y]=="o":
+            
+            print("boom")
+            findujeu()
+        
+        if tableau[x][y]!="o":
+            plateau[x][y]=tableau[x][y]
+
+def findujeu(): #défaite
+    print("game over")
+    #voir sur tk pour l'affichage de la fin
+
+def victoire (): # dans le mainloop : vérifie les conditions de victoire
+    toutes_mines_trouvées=True
+    for i in range(len(tableau)):
+        for j in range(len(tableau[i])):
+                       
+            if tableau[i][j]=="o":
+                toutes_mines_trouvées= toutes_mines_trouvées and plateau[i][j]=="d"
+
+    if toutes_mines_trouvées==True :
+        print("Bravo !")
+        #actions de fin de partie
+        #rejouer ?
+                       
+                       
+    
+    
+    
+    
+             
+
 
 
 def key(event):
     print ("pressed", repr(event.char))
 
 def callback(event):
-    print ("clicked at", event.x//20, event.y//20)
+    x,y = event.x//20, event.y//20
+    print ("clicked at", x,y)
+    positionnement(x,y,"leftclick")
+    refreshcanvas()
     
-
+def call2(event):
+    x,y = event.x//20, event.y//20
+    print ("clicked at", x,y)
+    positionnement(x,y,"rightclick")
+    refreshcanvas()
 
 
 
@@ -37,15 +144,17 @@ def wbfcbutton(): #fonction appelée pour écrire les valeurs dans un fichier
 
 def createNewDraw():
     pulldata()
+    global w
     w = Canvas(aside, width=(cacheData['xLen']*20), height=(cacheData['yLen']*20), background='white')
     w.pack() #on intègre le module déclaré à sa fenêtre (pack(sans paramètre) donc simplement à la suite du reste)
     w.bind("<Key>", key)
     w.bind("<Button-1>", callback)
+    w.bind("<Button-3>", call2)
     w.pack()
-    global MyDraw
-    MyDraw = listes.Draw(cacheData['xLen'],cacheData['yLen'],cacheData['p'])
+    initialisation(cacheData['xLen'],cacheData['yLen'],cacheData['p'])
+    init_plateau()
     refreshcanvas()
-    checkbutton.pack()
+    #checkbutton.pack()
     starter.destroy()
 
 '''à changer'''
@@ -55,25 +164,31 @@ def pulldata():
    cacheData["p"] = int(p.get())
    cacheData["xLen"] = int(xLen.get())
    cacheData["yLen"] = int(yLen.get())
-
 def refreshcanvas():
    w.delete("all")
-   cacheData["draw"] = MyDraw.getCurrentDraw()
 
-   for x in range(0,len(cacheData['draw']-1)):
-       for y in range(0,len(cacheData['draw'][x]-1)):
+   for x in range (len(tableau)):
+       for y in range (len(tableau[x])):
    
        #print('x = {} y = {}  b = {}'.format(x,y,cacheData['draw'][x][y]))
            a = (x*20+1, y*20+1)
            b = ((a[0]+18), a[1]+18)
            #if cacheData['draw'][x][y] == 0 : w.create_rectangle(a[0], a[1], b[0], b[1], fill="white")
-           if cacheData['draw'][x][y] == 1 :
+           if plateau[x][y] == ' ' :
                w.create_rectangle(a[0], a[1], b[0], b[1], fill="white", outline="")
-           if cacheData['draw'][x][y] == 0: # case inexplorée
-               w.create_rectangle(a[0], a[1], b[0], b[1], fill="black", outline="")
+           
+           if plateau[x][y] == 0: # case inexplorée
+               w.create_rectangle(a[0], a[1], b[0], b[1], fill="blue", outline="")
+           
+           if plateau[x][y] == '?' :
+                   w.create_text(a[0]+5, a[1]+5, text='?')
+           
+           if plateau[x][y] == 'd' :
+                  w.create_rectangle(a[0], a[1], b[0], b[1], fill="red", outline="")
+                  w.create_text(a[0]+5, a[1]+5, text='d')
            for i in range(1,8):
-               if cacheData['draw'][x][y] == str(i) :
-                   w.create_text(a[0], a[1], text=str(i))
+               if plateau[x][y] == str(i) :
+                   w.create_text(a[0]+5, a[1]+5, text=str(i))
                    
 def donothing(): #ne fait rien, comme son nom l'indique
    filewin = Toplevel(root)
