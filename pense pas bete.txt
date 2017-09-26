@@ -23,6 +23,3 @@ Lexique du tableau de sous-plateau (celle qui est affichée une fois révélée):
 nom du tableau (2dimensions) : tableau (globale)
 " ":rien
 "o":mine
-
-"{}".format(n) : case avec n mines autour.
->>>>>>> d668f78569a0d5a21e67a2d9609d7f5a7ee6a9ce
