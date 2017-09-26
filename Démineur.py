@@ -14,7 +14,7 @@ def initialisation(largeur, Longueur, difficulté): #initialise le dessous de gr
 
     for i in range(Longueur):
         for j in range(largeur): #compteur pour les numéros
-            if j!="o":
+            if tableau[i][j]!="o":
                 nb=0
                 try:
                     if tableau[i-1][j-1]=="o":
