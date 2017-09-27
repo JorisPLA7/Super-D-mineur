@@ -132,11 +132,11 @@ def victoire (): # dans le mainloop : vérifie les conditions de victoire
 
             if tableau[i][j]=="o":
                 toutes_mines_trouvées= toutes_mines_trouvées and plateau[i][j]=="d"
-            
+
             if plateau[i][j]=="d" and tableau[i][j]!="o":
                 toutes_mines_trouvées=False
-            
-                
+
+
 
     if toutes_mines_trouvées==True :
         print("Bravo !")
@@ -171,23 +171,6 @@ def call2(event): #clic droit
     x,y = event.x//20, event.y//20
     positionnement(x,y,"rightclick")
     refreshcanvas()
-
-
-
-'''à changer'''
-def rbfcbutton():  #fonction appelée pour ouvrir un fichier existant
-   global cacheData
-   cacheData = datasheets.pickread()
-   tableau = cacheData['tableau']
-   plateau = cacheData['plateau']
-   refreshcanvas()
-
-'''à changer'''
-
-def wbfcbutton(): #fonction appelée pour écrire les valeurs dans un fichier
-    cacheData['tableau'] = tableau #stockage des données dans le dico si le joueur veut sauvegarder
-    cacheData['plateau'] = plateau
-    datasheets.pickwrite(cacheData) # se référer à datasheets.py
 
 def createNewDraw():
     pulldata()
@@ -230,7 +213,7 @@ def refreshcanvas():
            if plateau[x][y] == 'green' :
                    w.create_rectangle(a[0], a[1], b[0], b[1], fill="green", outline="")
                    w.create_text(a[0]+8, a[1]+8, text=str(chr(9881)))
-                   
+
            if plateau[x][y] == 'bomb' :
                    w.create_rectangle(a[0], a[1], b[0], b[1], fill="purple", outline="")
                    w.create_text(a[0]+8, a[1]+8, text=str(chr(9881)))
@@ -239,7 +222,7 @@ def refreshcanvas():
                    w.create_text(a[0]+8, a[1]+8, text=str(chr(9883)))
            if plateau[x][y] == 'fail' :
                    w.create_rectangle(a[0], a[1], b[0], b[1], fill="orange", outline="")
-                   w.create_text(a[0]+8, a[1]+8, text=str(chr(9874)))     
+                   w.create_text(a[0]+8, a[1]+8, text=str(chr(9874)))
 
            if plateau[x][y] == '?' :
                 w.create_rectangle(a[0], a[1], b[0], b[1], fill="grey", outline="")
@@ -300,11 +283,6 @@ try:
 except:
     print("Impossible d'importer la bibliothèque :  tkinter")
 try:
-    import pickle
-    print("bibliothèque importée avec succès :  pickle")
-except:
-    print("Impossible d'importer la bibliothèque :  pickle")
-try:
     from lib import web
     print("bibliothèque importée avec succès :  lib\web")
 except:
@@ -337,7 +315,7 @@ global thereIsADraw
 global passedTime
 passedTime = 800
 
-appVersion = "0.1"
+appVersion = "1.1"
 
 cacheData = {}
 
@@ -353,11 +331,6 @@ root.wm_iconbitmap('ressources\supano.ico')#definition de l'icone
 menubar = Menu(root)
 
 filemenu = Menu(menubar, tearoff=0) #sous menu
-
-filemenu.add_command(label="Ouvrir une sauvegarde NON FONCTIONNEL", command=rbfcbutton)
-filemenu.add_command(label="Sauvegarder sans validation NON FONCTIONNEL", command=forcesave)
-filemenu.add_separator()
-
 filemenu.add_command(label="Quitter", command=root.destroy)
 menubar.add_cascade(label="Fichier", menu=filemenu)
 
@@ -372,7 +345,7 @@ menubar.add_cascade(label="Developpement", menu=devmenu)
 root.config(menu=menubar)
 
 ##Titre
-header = Label(root, text="Super-Demineur. Version {}".format(appVersion))
+header = Label(root, text="Super-D-mineur Version {} stable !".format(appVersion))
 header.pack(fill="both", expand="no")
 
 ##Panneau latéral
