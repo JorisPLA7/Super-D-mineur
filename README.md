@@ -1,2 +1,9 @@
 # Super-D-mineur
-démineur avec mon copain 
+projet finalisé réalisé en python3.6 32
+
+nécessite les libs:
+
+  - pickle
+  - tkinter
+  - time
+  - random
