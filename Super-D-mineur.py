@@ -18,25 +18,39 @@ def initialisation(largeur, Longueur, difficulté): #initialise le dessous de gr
                 try:
                     if tableau[i-1][j-1]=="o":
                         nb+=1
-
+                except:
+                    pass
+                try:
                     if tableau[i-1][j]=="o":
                         nb+=1
-
+                except:
+                    pass
+                try:
                     if tableau[i-1][j+1]=="o":
                         nb+=1
-
+                except:
+                    pass
+                try:
                     if tableau[i][j-1]=="o":
                         nb+=1
-
+                except:
+                    pass
+                try:
                     if tableau[i][j+1]=="o":
                         nb+=1
-
+                except:
+                    pass
+                try:
                     if tableau[i+1][j-1]=="o":
                         nb+=1
-
+                except:
+                    pass
+                try:
                     if tableau[i+1][j]=="o":
                         nb+=1
-
+                except:
+                    pass
+                try:
                     if tableau[i+1][j+1]=="o":
                         nb+=1
 
@@ -65,19 +79,40 @@ def liberer():
                         try:
                             if tableau[i-1][j]!="o":
                                 plateau[i-1][j]=tableau[i-1][j]
+                        except:
+                            pass
+                        try:
                             if tableau[i+1][j]!="o":
                                 plateau[i+1][j]=tableau[i+1][j]
+                        except:
+                            pass
+                        try:
                             if tableau[i][j-1]!="o":
                                 plateau[i][j-1]=tableau[i][j-1]
+                        except:
+                            pass
+                        try:
                             if tableau[i][j+1]!="o":
                                 plateau[i][j+1]=tableau[i][j+1]
 
+                        except:
+                            pass
+                        try:
                             if tableau[i-1][j-1]!="o":
                                 plateau[i-1][j-1]=tableau[i-1][j-1]
+                        except:
+                            pass
+                        try:
                             if tableau[i-1][j-1]!="o":
                                 plateau[i-1][j-1]=tableau[i-1][j-1]
+                        except:
+                            pass
+                        try:
                             if tableau[i+1][j-1]!="o":
                                 plateau[i+1][j-1]=tableau[i+1][j-1]
+                        except:
+                            pass
+                        try:
                             if tableau[i+1][j+1]!="o":
                                 plateau[i+1][j+1]=tableau[i+1][j+1]
 
@@ -319,13 +354,10 @@ appVersion = "1.1"
 
 cacheData = {}
 
-
 root=Tk() #création de la fenêtre tkinter racine
 
 root.wm_title('Super D-Mineur')#definition du titre
 root.wm_iconbitmap('ressources\supano.ico')#definition de l'icone
-
-
 
 ##Barre de Menu supérieur
 menubar = Menu(root)
@@ -351,8 +383,6 @@ header.pack(fill="both", expand="no")
 ##Panneau latéral
 aside = Frame(root)
 aside.pack(side=LEFT)
-
-
 
 ##panneau  init
 starter = LabelFrame(root, text="Configuration : initiale")
