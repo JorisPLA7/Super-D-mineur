@@ -7,7 +7,7 @@ def initialisation(largeur, Longueur, difficulté): #initialise le dessous de gr
         lignes=[" " for i in range(largeur)]
         for i in range(len(lignes)):
             mine=random.randint(0,35)
-            if mine<=difficulté:
+            if mine <= difficulté:
                 lignes[i]="o"
         tableau.append(lignes)
 
@@ -357,7 +357,7 @@ cacheData = {}
 root=Tk() #création de la fenêtre tkinter racine
 
 root.wm_title('Super D-Mineur')#definition du titre
-root.wm_iconbitmap('ressources\supano.ico')#definition de l'icone
+#root.wm_iconbitmap('ressources/supano.ico')#definition de l'icone
 
 ##Barre de Menu supérieur
 menubar = Menu(root)
