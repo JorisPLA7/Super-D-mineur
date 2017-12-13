@@ -1,7 +1,9 @@
 # Super-D-mineur
-projet finalisé réalisé en python3.6 32
+python3.6 minesweeper game
 
-nécessite les libs:
+Language : French
+
+necessary libraries:
 
   - pickle
   - tkinter
