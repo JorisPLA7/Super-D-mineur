@@ -300,55 +300,15 @@ def guimessage(color, context, reason):
 
 ## init tkinter
 # importation des bibliotheques pyhton
-try:
-    from tests import listes
+from tests import listes
+from tkinter import *
+from tkinter.filedialog import *
+from tkinter.messagebox import askokcancel, askyesno, askquestion
+from lib import web
+from lib import datasheets
+import random
+import time
 
-    print("bibliothèque importée avec succès :  listes")
-except:
-    print("Impossible d'importer la bibliothèque :  listes")
-
-try:  # schéma classique verbeux, afin que l'utilisateur sache quels fichiers sont manquants
-    from tkinter import *
-
-    print("bibliothèque importée avec succès :  tkinter")
-except:
-    print("Impossible d'importer la bibliothèque :  tkinter")
-try:
-    from tkinter.filedialog import *
-
-    print("bibliothèque importée avec succès :  tkinter")
-except:
-    print("Impossible d'importer la bibliothèque :  tkinter")
-try:
-    from tkinter.messagebox import askokcancel, askyesno, askquestion
-
-    print("bibliothèque importée avec succès :  tkinter")
-except:
-    print("Impossible d'importer la bibliothèque :  tkinter")
-try:
-    from lib import web
-
-    print("bibliothèque importée avec succès :  lib\web")
-except:
-    print("Impossible d'importer la bibliothèque :  lib\web")
-try:
-    from lib import datasheets
-
-    print("bibliothèque importée avec succès :  lib\datasheets")
-except:
-    print("Impossible d'importer la bibliothèque :  lib\datasheets")
-try:
-    import random
-
-    print("bibliothèque importée avec succès :  random")
-except:
-    print("Impossible d'importer la bibliothèque :  random")
-try:
-    import time
-
-    print("bibliothèque importée avec succès :  time")
-except:
-    print("Impossible d'importer la bibliothèque :  time")
 
 global appVersion  # Variable contenant le numero de version du porgramme (écrit avec les données)
 
