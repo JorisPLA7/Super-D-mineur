@@ -1,6 +1,6 @@
 helppage = "https://github.com/JorisPLA7/Super-D-mineur"
 githubpage = "https://github.com/JorisPLA7/Super-D-mineur/"
-rulepage = "http://www.tuks.ovh/github_webpages/super-D-mineur/gagner%20au%20d%c3%a9mineur.html"
+rulepage = "http://demineur.hugames.fr/help.php"
 
 import webbrowser
 
