@@ -2,8 +2,9 @@
 python3.6 minesweeper game
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/WcHD0qK/Capture-d-cran-du-2019-03-24-15-38-42.png" alt="Capture-d-cran-du-2019-03-24-15-38-42" border="0"></a>
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/vksVGXq/Capture-d-cran-du-2019-03-24-15-37-23.png" alt="Capture-d-cran-du-2019-03-24-15-37-23" border="0"></a>
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/XXYZNtr/Capture-d-cran-du-2019-03-24-15-34-52.png" alt="Capture-d-cran-du-2019-03-24-15-34-52" border="0"></a>
+
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/vksVGXq/Capture-d-cran-du-2019-03-24-15-37-23.png" alt="Capture-d-cran-du-2019-03-24-15-37-23" border="0"></a>
 
 ## Installing
 
