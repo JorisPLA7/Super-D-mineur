@@ -150,7 +150,7 @@ def positionnement(x, y, action):
 
 
 def findujeu():  # défaite
-    print("game over")
+    #print("game over")
     for i in range(len(tableau)):
         for j in range(len(tableau[i])):
             if tableau[i][j] == "o":
@@ -176,7 +176,7 @@ def victoire():  # dans le mainloop : vérifie les conditions de victoire
                 toutes_mines_trouvées = False
 
     if toutes_mines_trouvées == True:
-        print("Bravo !")
+        #print("Bravo !")
         for i in range(len(tableau)):
             for j in range(len(tableau[i])):
                 if tableau[i][j] == "o":
@@ -271,24 +271,6 @@ def refreshcanvas():
                     w.create_text(a[0] + 8, a[1] + 8, text=str(i))
 
 
-def donothing():  # ne fait rien, comme son nom l'indique
-    filewin = Toplevel(root)
-    button = Button(filewin, text="Do nothing button")
-    button.pack()  # on intègre le module déclaré à sa fenêtre (pack(sans paramètre) donc simplement à la suite du reste)
-    print("Fenêtre qui ne fait rien ouverte")
-
-
-'''à changer'''
-
-
-def forcesave():
-    print("tentative de sauvegarde forcée")
-    wbfcbutton()
-
-
-'''à changer'''
-
-
 # gui refreshers
 def guimessage(color, context, reason):
     messageframe = LabelFrame(root, text=context, fg=color)
@@ -337,16 +319,16 @@ root.wm_title('Super D-Mineur')  # definition du titre
 menubar = Menu(root)
 
 filemenu = Menu(menubar, tearoff=0)  # sous menu
-filemenu.add_command(label="Quitter", command=root.destroy)
-menubar.add_cascade(label="Fichier", menu=filemenu)
+filemenu.add_command(label="Exit", command=root.destroy)
+menubar.add_cascade(label="File", menu=filemenu)
 
 helpmenu = Menu(menubar, tearoff=0)  # sous menu
-helpmenu.add_command(label="Version de l'application : {}".format(appVersion), command=web.help)
-menubar.add_cascade(label="Aide", menu=helpmenu)
-menubar.add_command(label="Règles du démineur", command=web.rules)
+helpmenu.add_command(label="Version : {}".format(appVersion), command=web.help)
+menubar.add_cascade(label="Help", menu=helpmenu)
+menubar.add_command(label="Rules", command=web.rules)
 
 devmenu = Menu(menubar, tearoff=0)  # sous menu
-menubar.add_cascade(label="Developpement", menu=devmenu)
+menubar.add_cascade(label="Dev", menu=devmenu)
 
 root.config(menu=menubar)
 
@@ -359,21 +341,21 @@ aside = Frame(root)
 aside.pack(side=LEFT)
 
 ##panneau  init
-starter = LabelFrame(root, text="Configuration : initiale")
+starter = LabelFrame(root, text="Configuration : init")
 starter.pack(fill="both", expand="yes", side=TOP)
 
-left = Label(starter, text="difficulté (croissante)")
+left = Label(starter, text="difficulty ")
 left.pack()
 p = Scale(starter, from_=1, to=10, )
 p.pack()
 
-left2 = Label(starter, text="Taille de la grille (x = y)")
+left2 = Label(starter, text="Terrain size (x = y)")
 left2.pack()  # on intègre le module déclaré à sa fenêtre (pack(sans paramètre) donc simplement à la suite du reste)
 
 xLen = Spinbox(starter, from_=20, to=100, )
 xLen.pack()  # on intègre le module déclaré à sa fenêtre (pack(sans paramètre) donc simplement à la suite du reste)
 
-creatbutton = Button(starter, text="Jouer !", command=createNewDraw)
+creatbutton = Button(starter, text="Play !", command=createNewDraw)
 creatbutton.pack()
 
 root.mainloop()
