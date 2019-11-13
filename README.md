@@ -22,4 +22,4 @@ You can then run the program :
 ## License
 
 This project is licensed under the GNU GPLv3 - see the [LICENSE](LICENSE) file
-for details
+for details see license.
